@@ -13,23 +13,21 @@ import org.springframework.context.annotation.Configuration;
 @Slf4j
 @RequiredArgsConstructor
 @Configuration
-public class TestJobConf {
+public class BatchMonitorJobConf {
     private final JobBuilderFactory jobBuilderFactory;
     private final StepBuilderFactory stepBuilderFactory;
-    private final TestJobListener testJobListener;
 
     @Bean
-    public Job testJob() {
-        return jobBuilderFactory.get("testJob")
-                .start(testStep1())
-                .listener(testJobListener)
+    public Job checkHistoryJob() {
+        return jobBuilderFactory.get("checkHistoryJob")
+                .start(getBatchHistoryStep())
                 .build();
     }
 
-    private Step testStep1() {
-        return stepBuilderFactory.get("testStep1")
+    private Step getBatchHistoryStep() {
+        return stepBuilderFactory.get("getBatchHistoryStep")
                 .tasklet((contribution, chunkContext) -> {
-                    log.info("test step 1 for monitoring");
+                    log.info(">>>>> Get Batch History From BATCH_JOB_EXECUTION");
                     return RepeatStatus.FINISHED;
                 })
                 .build();
