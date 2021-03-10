@@ -1,5 +1,6 @@
 package com.sonic.batchmonitor.job;
 
+import com.sonic.batchmonitor.service.BatchMonitorHistoryService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
@@ -16,6 +17,7 @@ import org.springframework.context.annotation.Configuration;
 public class BatchMonitorJobConf {
     private final JobBuilderFactory jobBuilderFactory;
     private final StepBuilderFactory stepBuilderFactory;
+    private final BatchMonitorHistoryService batchMonitorHistoryService;
 
     @Bean
     public Job checkHistoryJob() {

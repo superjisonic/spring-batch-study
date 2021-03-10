@@ -1,28 +1,27 @@
 package com.sonic.batchmonitor.model;
 
-import lombok.Data;
+import lombok.*;
 import org.hibernate.type.YesNoType;
 
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Data
+@Entity
+@Table(name = "batch_monitor_history")
+@Getter @Setter
+@EqualsAndHashCode
+@Builder @AllArgsConstructor @NoArgsConstructor
 public class BatchMonitorHistory {
-//     `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-//  `batch_job_name` varchar(200) NOT NULL DEFAULT '',
-//            `job_start_time` timestamp NULL DEFAULT NULL,
-//  `job_end_time` timestamp NULL DEFAULT NULL,
-//  `checked_yn` char(1) DEFAULT NULL,
-//  `create_ymdt` timestamp NULL DEFAULT NULL,
-//  `update_ymdt` timestamp NULL DEFAULT NULL,
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String batchJobName;
+
+    @Column(nullable=false)
+    private String jobName;
     private LocalDateTime jobStartTime;
     private LocalDateTime jobEndTime;
     private YesNoType checkedYn;
-    private LocalDateTime createYmdt;
-    private LocalDateTime updateYmdt;
+    private long jobInstanceId;
 
 }
