@@ -1,6 +1,7 @@
 package com.sonic.batchmonitor.model;
 
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.type.YesNoType;
 
 import javax.persistence.*;
@@ -22,6 +23,6 @@ public class BatchMonitorHistory {
     private LocalDateTime jobStartTime;
     private LocalDateTime jobEndTime;
     private YesNoType checkedYn;
-    private long jobInstanceId;
+    private Long jobInstanceId;
 
 }
