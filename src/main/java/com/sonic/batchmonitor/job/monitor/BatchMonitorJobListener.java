@@ -1,4 +1,4 @@
-package com.sonic.batchmonitor.job;
+package com.sonic.batchmonitor.job.monitor;
 
 import com.sonic.batchmonitor.model.YesOrNo;
 import com.sonic.batchmonitor.service.BatchMonitorHistoryService;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @RequiredArgsConstructor
 @Component
-public class TestJobListener extends JobExecutionListenerSupport {
+public class BatchMonitorJobListener extends JobExecutionListenerSupport {
 
 
 
@@ -29,11 +29,11 @@ public class TestJobListener extends JobExecutionListenerSupport {
     public void afterJob(JobExecution jobExecution) {
         if(jobExecution.getStatus() == BatchStatus.COMPLETED) {
             log.info("#### afterJob :: Job succeed! ");
-            batchMonitorHistoryService.updateBatchJobStatus(jobExecution.getJobInstance().getJobName(), "Y", jobExecution.getJobInstance().getInstanceId());
+            batchMonitorHistoryService.updateBatchJobStatus(jobExecution.getJobInstance().getJobName(), "Y", jobExecution.getId());
 
         } else if (jobExecution.getStatus() == BatchStatus.FAILED) {
             log.info("#### afterJob :: Job failed! ");
-            batchMonitorHistoryService.updateBatchJobStatus(jobExecution.getJobInstance().getJobName(), "N", jobExecution.getJobInstance().getInstanceId());
+            batchMonitorHistoryService.updateBatchJobStatus(jobExecution.getJobInstance().getJobName(), "N", jobExecution.getId());
         }
     }
 

@@ -9,6 +9,9 @@ import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 
 @Repository
 public interface BatchMonitorHistoryRepository extends JpaRepository<BatchMonitorHistory, Long>, QuerydslPredicateExecutor<BatchMonitorHistory> {
@@ -20,5 +23,6 @@ public interface BatchMonitorHistoryRepository extends JpaRepository<BatchMonito
             , nativeQuery=true)
     int updateJobStatus(String jobName, String status, long jobInstanceId);
 
+    List<BatchMonitorHistory> findByCheckedYn(String checkedYn);
 
 }

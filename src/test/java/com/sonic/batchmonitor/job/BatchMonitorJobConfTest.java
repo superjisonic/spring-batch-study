@@ -1,6 +1,6 @@
-package com.sonic.batchmonitor;
+package com.sonic.batchmonitor.job;
 
-import com.sonic.batchmonitor.job.BatchMonitorJobConf;
+import com.sonic.batchmonitor.job.monitor.BatchMonitorJobConf;
 import lombok.RequiredArgsConstructor;
 import org.junit.runner.RunWith;
 import org.springframework.batch.core.BatchStatus;

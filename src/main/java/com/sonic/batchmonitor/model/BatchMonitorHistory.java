@@ -20,9 +20,7 @@ public class BatchMonitorHistory {
 
     @Column(nullable=false)
     private String jobName;
-    private LocalDateTime jobStartTime;
-    private LocalDateTime jobEndTime;
     private YesNoType checkedYn;
-    private Long jobInstanceId;
+    private Long jobExecutionId;
 
 }

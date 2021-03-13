@@ -8,6 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Slf4j
 @Service
 @Transactional
@@ -15,6 +17,12 @@ import org.springframework.transaction.annotation.Transactional;
 public class BatchMonitorHistoryService {
 
     private final BatchMonitorHistoryRepository batchMonitorHistoryRepository;
+
+    public List<BatchMonitorHistory> checkBatchMonitorHistory(){
+        log.info("checking history if there is a failed batch");
+        return batchMonitorHistoryRepository.findByCheckedYn("N");
+    }
+
 
     public void updateBatchJobStatus(String jobName, String status, long jobInstanceId){
         log.info("updating...... jobName = {} status = {} jobInstanceId = {}",jobName, status, jobInstanceId);
@@ -27,5 +35,9 @@ public class BatchMonitorHistoryService {
                 .jobInstanceId(null)
                 .build();
         batchMonitorHistoryRepository.save(batchMonitorHistory);
+    }
+
+
+    public void rerunFailedBatch(BatchMonitorHistory batchMonitorHistory) {
     }
 }
