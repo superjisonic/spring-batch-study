@@ -4,7 +4,6 @@ import com.sonic.batchmonitor.model.YesOrNo;
 import com.sonic.batchmonitor.service.BatchMonitorHistoryService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.LoggerFactory;
 import org.springframework.batch.core.BatchStatus;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.listener.JobExecutionListenerSupport;

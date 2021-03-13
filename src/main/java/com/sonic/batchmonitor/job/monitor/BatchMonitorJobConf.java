@@ -1,5 +1,6 @@
 package com.sonic.batchmonitor.job;
 
+import com.sonic.batchmonitor.model.BatchMonitorHistory;
 import com.sonic.batchmonitor.service.BatchMonitorHistoryService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -27,11 +28,8 @@ public class BatchMonitorJobConf {
     }
 
     private Step getBatchHistoryStep() {
-        return stepBuilderFactory.get("getBatchHistoryStep")
-                .tasklet((contribution, chunkContext) -> {
-                    log.info(">>>>> Get Batch History From BATCH_JOB_EXECUTION");
-                    return RepeatStatus.FINISHED;
-                })
-                .build();
+//        return stepBuilderFactory.get("getBatchHistoryStep")
+//                .chunk(chun)
+//                .build();
     }
 }
