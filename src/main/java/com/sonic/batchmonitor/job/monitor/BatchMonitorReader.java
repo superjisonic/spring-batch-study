@@ -15,7 +15,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Component
-public class BatchMonitorReader implements ItemReader<List<BatchMonitorHistory>> {
+public class BatchMonitorReader implements ItemReader {
 
     private final BatchMonitorHistoryService batchMonitorHistoryService;
     private final StepExecution stepExecution;

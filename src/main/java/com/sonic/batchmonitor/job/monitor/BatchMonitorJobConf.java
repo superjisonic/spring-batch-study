@@ -45,7 +45,7 @@ public class BatchMonitorJobConf {
     private Step getBatchHistoryStep() {
         return stepBuilderFactory.get("getBatchHistoryStep")
                 .<BatchMonitorHistory, BatchMonitorHistory>chunk(chunkSize)
-                .reader((ItemReader<? extends BatchMonitorHistory>) batchMonitorReader)
+                .reader(batchMonitorReader)
                 .build();
     }
 

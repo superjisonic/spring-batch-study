@@ -32,7 +32,7 @@ public class BatchMonitorHistoryService {
     public void insertBatchMonitorHistory(String jobName) {
         BatchMonitorHistory batchMonitorHistory = BatchMonitorHistory.builder()
                 .jobName(jobName)
-                .jobInstanceId(null)
+                .jobExecutionId(null)
                 .build();
         batchMonitorHistoryRepository.save(batchMonitorHistory);
     }
